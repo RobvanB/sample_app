@@ -14,6 +14,7 @@ group :development do
 end
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '4.1.0'  #Active record factory for creatig records for testing
 end
 # Gems used only for assets and not required
 # in production environments by default.
