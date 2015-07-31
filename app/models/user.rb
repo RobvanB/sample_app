@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_member_token
 
   # Validations
   validates :name, presence: true   # Same as: validates(:name, presence: true) - make sure a non-blank value is provided
@@ -25,4 +26,12 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  # Private methods
+  private
+
+    # Member token
+    def create_member_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end
