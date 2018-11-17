@@ -29,4 +29,4 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
-gem 'json', '>= 1.8'
+
